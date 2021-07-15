@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\IndexController::class,'render'])->name("index");
 Route::get('/category/{name}/{page?}', [\App\Http\Controllers\CategoryController::class,'render','name','page'])->where(['name','page'])->name("category");
 Route::get('/products/{name}',[\App\Http\Controllers\ProductController::class,'render','name'])->where(['name'])->name("products");
-Route::group(['middleware' => 'locale'], function() {
-    Route::get('change-language/{language}', [\App\Http\Controllers\HomeController::class,'changeLanguage'])
-        ->name('user.change-language');
-});
+Route::get('/faq.html',[\App\Http\Controllers\FaqController::class,'render'])->name('faq');
+Route::get('/contact.html',function (){
+    return view("frontend.contact");
+})->name("contact");
+

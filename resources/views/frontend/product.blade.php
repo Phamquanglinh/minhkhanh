@@ -4,6 +4,15 @@
 @extends("layout.main")
 @section("custom-library")
     <style>
+        @media only screen and (max-width:768px) {
+            .detail img{
+                width: 100%!important;
+                height: auto!important;
+            }
+        }
+        .detail{
+            overflow: hidden;
+        }
         .gallery .col-3 img {
             opacity: 0.7;
         }
@@ -93,6 +102,25 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="pt-3 px-3">
+                    <div class="h5"><i class="fas fa-tags"></i> Nhãn</div>
+                    @php($tags = $product->tags()->get())
+                    @foreach($tags  as $tag)
+                        <div class="badge badge-danger p-2">{{$tag->name}}</div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="py-5 detail">
+            <div class="text-center pb-5">
+                <button class="btn btn-outline-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Xem thêm thông tin
+                </button>
+            </div>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    {!! $product->description !!}
                 </div>
             </div>
         </div>

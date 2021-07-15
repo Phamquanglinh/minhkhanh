@@ -8,8 +8,13 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function render($slug,$page=1){
-        $name = Category::where('slug','=',$slug)->first()->name;
-        $productList = Category::where('slug','=',$slug)->first()->products()->get();
-        return view("frontend.category",['name'=>$name,'products'=>$productList,'page'=>$page]);
+        if($cat = Category::where('slug','=',$slug)->first()){
+            $name=$cat->name;
+            $productList = Category::where('slug','=',$slug)->first()->products()->get();
+            return view("frontend.category",['name'=>$name,'products'=>$productList,'page'=>$page]);
+        }else{
+            return view("errors.404");
+        }
+
     }
 }

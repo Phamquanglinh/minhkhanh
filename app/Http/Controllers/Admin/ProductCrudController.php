@@ -39,32 +39,25 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        //$this->crud->addButtonFromModelFunction('line','a','setThumbnail','beginning');
+        $this->crud->addButtonFromModelFunction('line', 'viewweb', 'viewOnWeb', 'beginning');
         CRUD::addColumn(['name' => 'name', 'Label' => 'Tên sản phẩm']);
+        CRUD::addColumn(['name' => 'status', 'label' => 'Trạng thái', 'type' => 'select_from_array', 'options' => ['Đã đăng', 'Chưa đăng(Nháp)']]);
         CRUD::addColumn(
             [
                 // run a function on the CRUD model and show its return value
-                'name'  => 'thumbnail',
-                'label' => 'Ảnh sản phẩm', // Table column heading
-                'type'  => 'model_function',
-                'function_name' => 'setThumbnail', // the method in your Model
-            ]
-        );
-        CRUD::addColumn(['name' => 'status','label'=>'Trạng thái', 'type' => 'select_from_array','options'=>['Đã đăng','Chưa đăng(Nháp)']]);
-        CRUD::addColumn(
-            [
-                // run a function on the CRUD model and show its return value
-                'name'  => 'trade',
+                'name' => 'trade',
                 'label' => 'Nhà phân phối', // Table column heading
-                'type'  => 'model_function',
+                'type' => 'model_function',
                 'function_name' => 'setTrader', // the method in your Model
             ]
         );
         CRUD::addColumn(
             [
                 // run a function on the CRUD model and show its return value
-                'name'  => 'type',
+                'name' => 'type',
                 'label' => 'Loại', // Table column heading
-                'type'  => 'model_function',
+                'type' => 'model_function',
                 'function_name' => 'setType', // the method in your Model
             ]
         );
@@ -79,10 +72,10 @@ class ProductCrudController extends CrudController
         CRUD::addColumn([
             'name' => 'category_id',
             'label' => 'Danh mục',
-            'type'=>'select',
-            'model'=>'App\Models\Category',
-            'entity'=>'category',
-            'attribute'=>'name',
+            'type' => 'select',
+            'model' => 'App\Models\Category',
+            'entity' => 'category',
+            'attribute' => 'name',
         ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -103,7 +96,7 @@ class ProductCrudController extends CrudController
 
         CRUD::addField(['name' => 'name', 'Label' => 'Tên sản phẩm']);
         CRUD::addField(['name' => 'slug', 'type' => 'hidden']);
-        CRUD::addField(['name' => 'status','label'=>'Trạng thái', 'type' => 'select_from_array','options'=>['Đã đăng','Chưa đăng(Nháp)']]);
+        CRUD::addField(['name' => 'status', 'label' => 'Trạng thái', 'type' => 'select_from_array', 'options' => ['Đã đăng', 'Chưa đăng(Nháp)']]);
 //        CRUD::addField([
 //            'name' => 'trade_id',
 //            'label' => 'Nhà phân phối',
@@ -115,23 +108,34 @@ class ProductCrudController extends CrudController
         CRUD::addField([
             'name' => 'category_id',
             'label' => 'Danh mục',
-            'type'=>'select2',
-            'model'=>'App\Models\Category',
-            'entity'=>'category',
-            'attribute'=>'name',
+            'type' => 'select2',
+            'model' => 'App\Models\Category',
+            'entity' => 'category',
+            'attribute' => 'name',
         ]);
         CRUD::addField([
-            'name'      => 'avatar',
-            'label'     => 'Ảnh sản phẩm',
-            'type'      => 'browse_multiple',
+            'name' => 'avatar',
+            'label' => 'Ảnh sản phẩm',
+            'type' => 'browse_multiple',
             'aspect_ratio' => 1, // set to 0 to allow any aspect ratio
-            'crop'         => true
+            'crop' => true
         ]);
         CRUD::addField(['name' => 'short', 'label' => 'Giới thiệu ngắn']);
-        CRUD::addField(['name' => 'description', 'label' => 'Chi tiết','type'=>'ckeditor']);
-        CRUD::addField(['name'=>'code','label'=>'Mã Code']);
-        CRUD::addField(['name'=>'price','label'=>'Giá khuyến mãi']);
-        CRUD::addField(['name'=>'origin_price','label'=>'Giá gốc']);
+        CRUD::addField(['name' => 'description', 'label' => 'Chi tiết', 'type' => 'ckeditor']);
+        CRUD::addField(['name' => 'code', 'label' => 'Mã Code']);
+        CRUD::addField(['name' => 'price', 'label' => 'Giá khuyến mãi']);
+        CRUD::addField(['name' => 'origin_price', 'label' => 'Giá gốc']);
+        CRUD::addField(
+            [
+                // any type of relationship
+                'name' => 'tags', // name of relationship method in the model
+                'type' => 'relationship',
+                'label' => 'Nhãn', // Table column heading
+                'entity' => 'tags',
+                'attribute' => 'name',
+                'model' => 'App\Models\Tag',
+            ]
+        );
         //CRUD::addField(['name' => 'type','label'=>'Loại sản phẩm', 'type' => 'select_from_array','options'=>['Đã đăng','Chưa đăng(Nháp)']]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
