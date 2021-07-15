@@ -1,0 +1,26 @@
+.content-faq {
+    color: white;
+}
+
+.content-faq a:hover {
+    color: #e27f42;
+}
+
+.title-faq {
+    color: #ff3c3cdb !important;
+}
+
+.bg-title-faq a:hover {
+    text-decoration: none;
+}
+
+.bg-title-faq {
+    background-color: #21252982 !important;
+}
+
+.card {
+    color: white;
+    background-color: #0000006e;
+    border: 1px solid rgba(0, 0, 0, .125)
+}
+
