@@ -13,6 +13,26 @@
     <link href="{{asset("css/css/style.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("css/css/site.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("css/css/navbar.css")}}" rel="stylesheet" type="text/css">
+    <style>
+        .cart {
+            position: fixed;
+            top: 25%;
+            right: 2%;
+            background: red;
+            padding: 23px;
+            border-radius: 50%;
+            color: white;
+            z-index: 9999;
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        .cart:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            transition: 0.5s;
+        }
+    </style>
     @yield("custom-library")
 </head>
 <body>
@@ -101,7 +121,9 @@
                             <ul class="submenu dropdown-menu shadow-lg">
                                 @php($cameras = \App\Models\Category::where('type','=',0)->get())
                                 @foreach($cameras as $camera)
-                                    <li><a class="dropdown-item" href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a></li>
+                                    <li><a class="dropdown-item"
+                                           href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </li>
@@ -112,7 +134,9 @@
                             <ul class="submenu dropdown-menu shadow-lg">
                                 @php($cameras = \App\Models\Category::where('type','=',1)->get())
                                 @foreach($cameras as $camera)
-                                    <li><a class="dropdown-item" href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a></li>
+                                    <li><a class="dropdown-item"
+                                           href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </li>
@@ -238,7 +262,7 @@
                         </li>
                         <li class="dropdown-item">
                             <a class="nav-link text-dark"
-                               href="http://localhost/minhkhanh/frontend/web/tool/recommend">
+                               href="{{route("recommend")}}">
                                 <i class="fas fa-cogs"></i> Khuyến cáo
                             </a>
                         </li>
@@ -262,12 +286,27 @@
                             <i class="far fa-user"></i> {{backpack_user()->name}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item">
-                                <a class="nav-link text-dark"
-                                   href="{{route("backpack.dashboard")}}">
-                                    <i class="fas fa-tachometer-alt"></i> Quản trị
-                                </a>
-                            </li>
+                            @if(backpack_user()->role <= 1)
+                                <li class="dropdown-item">
+                                    <a class="nav-link text-dark"
+                                       href="{{route("backpack.account.info")}}">
+                                        <i class="fas fa-user"></i> Hồ sơ admin
+                                    </a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a class="nav-link text-dark"
+                                       href="{{route("backpack.dashboard")}}">
+                                        <i class="fas fa-tachometer-alt"></i> Quản trị
+                                    </a>
+                                </li>
+                            @else
+                                <li class="dropdown-item">
+                                    <a class="nav-link text-dark"
+                                       href="{{route("profile.index")}}">
+                                        <i class="fas fa-tachometer-alt"></i> Thông tin của bạn
+                                    </a>
+                                </li>
+                            @endif
                             <li class="dropdown-item">
                                 <a class="nav-link text-dark"
                                    href="{{route("backpack.auth.logout")}}">
@@ -306,6 +345,13 @@
     @yield("content")
 </div>
 <footer class="footer bg-danger row-full">
+    @if(backpack_auth()->check())
+        <a href="{{route("cart")}}">
+            <div class="cart h2">
+                <i class="fas fa-cart-plus"></i>
+            </div>
+        </a>
+    @endif
     <section class="kh-footer">
         <div class="container text-white">
             <div class="row">

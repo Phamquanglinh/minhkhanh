@@ -38,13 +38,13 @@ class Product extends Model
 
     public function setTrader()
     {
-        $category = Category::find($this->id);
+        $category = Category::find($this->category_id);
         return $category->trades()->first()->name;
     }
 
     public function setType()
     {
-        $category = Category::find($this->id);
+        $category = Category::find($this->category_id);
         switch ($category->type) {
             case 0:
                 return "Camera";

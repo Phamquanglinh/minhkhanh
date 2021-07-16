@@ -39,8 +39,9 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        //$this->crud->addButtonFromModelFunction('line','a','setThumbnail','beginning');
+
         $this->crud->addButtonFromModelFunction('line', 'viewweb', 'viewOnWeb', 'beginning');
+        $this->crud->addButtonFromModelFunction('line','a','setThumbnail','beginning');
         CRUD::addColumn(['name' => 'name', 'Label' => 'Tên sản phẩm']);
         CRUD::addColumn(['name' => 'status', 'label' => 'Trạng thái', 'type' => 'select_from_array', 'options' => ['Đã đăng', 'Chưa đăng(Nháp)']]);
         CRUD::addColumn(
