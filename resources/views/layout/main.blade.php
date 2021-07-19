@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js">
     <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/bootstrap.js")}}"></script>
+    <script type="text/javascript" src="{{asset("js/notify.min.js")}}"></script>
 {{--    <link href="{{asset("css/fontawesome/CSS/all.css")}}" rel="stylesheet" type="text/css">--}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="{{asset("css/css/style.css")}}" rel="stylesheet" type="text/css">

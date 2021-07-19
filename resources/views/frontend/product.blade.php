@@ -4,15 +4,17 @@
 @extends("layout.main")
 @section("custom-library")
     <style>
-        @media only screen and (max-width:768px) {
-            .detail img{
-                width: 100%!important;
-                height: auto!important;
+        @media only screen and (max-width: 768px) {
+            .detail img {
+                width: 100% !important;
+                height: auto !important;
             }
         }
-        .detail{
+
+        .detail {
             overflow: hidden;
         }
+
         .gallery .col-3 img {
             opacity: 0.7;
         }
@@ -26,9 +28,9 @@
             overflow: hidden;
         }
 
-        .quantity{
-            width: 45px!important;
-            flex: none!important;
+        .quantity {
+            width: 45px !important;
+            flex: none !important;
         }
     </style>
 @endsection
@@ -85,7 +87,8 @@
                                 <div class="input-group-prepend">
                                     <button class="btn rounded-0 btn-outline-danger" type="button" id="minus">-</button>
                                 </div>
-                                <input type="text" class="form-control quantity" value="1" id="quantity" aria-describedby="button-addon1" readonly>
+                                <input type="text" class="form-control quantity" value="1" id="quantity"
+                                       aria-describedby="button-addon1" readonly>
                                 <div class="input-group-prepend">
                                     <button class="btn rounded-0 btn-outline-danger" type="button" id="plus">+</button>
                                 </div>
@@ -94,10 +97,13 @@
                         <div class="add-card">
                             <div class="row">
                                 <div class="col-md-6 col-12 py-1 p-1">
-                                    <div class=" w-100 btn btn-outline-warning" id="ajax-add-cart">Thêm vào giỏ hàng</div>
+                                    <div class=" w-100 btn btn-outline-warning" id="ajax-add-cart">Thêm vào giỏ hàng
+                                    </div>
                                 </div>
                                 <div class="col-md-6 col-12 py-1 p-1">
+
                                     <div class="w-100 btn btn-outline-danger" id="ajax-buy-now">Mua ngay</div>
+
                                 </div>
                             </div>
                         </div>
@@ -114,7 +120,8 @@
         </div>
         <div class="py-5 detail">
             <div class="text-center pb-5">
-                <button class="btn btn-outline-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-outline-danger" type="button" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Xem thêm thông tin
                 </button>
             </div>
@@ -131,16 +138,16 @@
                     $("#big-img").attr("src", this.src);
                 })
                 $("#plus").click(
-                    function (){
+                    function () {
                         var couter = parseInt($("#quantity").val());
                         couter++;
                         $("#quantity").val(couter);
                     }
                 );
                 $("#minus").click(
-                    function (){
+                    function () {
                         var couter = parseInt($("#quantity").val());
-                        if(couter>1){
+                        if (couter > 1) {
                             couter--;
                         }
                         $("#quantity").val(couter);
@@ -159,17 +166,31 @@
                         }
                     });
                 }
-                $("#ajax-add-cart").click(function (){
-                   var product_id = {{$product->id}}
-                   var quantity = $('#quantity').val();
-                   addCart(product_id,quantity);
+
+                $("#ajax-add-cart").click(function () {
+                    var product_id = {{$product->id}}
+                        var
+                    quantity = $('#quantity').val();
+                    addCart(product_id, quantity);
+                    $(".cart").notify(
+                        "Thêm sản phẩm thành công",
+                        {
+                            position: "left",
+                            className: 'a btn btn-success px-5 bg-danger',
+                            arrowSize: 5,
+                            showDuration: 200,
+                            autoHideDelay:2000,
+                            hideDuration:200,
+                        }
+                    );
                 });
 
-                $("#ajax-buy-now").click(function (){
+                $("#ajax-buy-now").click(function () {
                     var product_id = {{$product->id}}
-                        var quantity = $('#quantity').val();
-                    addCart(product_id,quantity);
-                    window.location.assign("{{route("cart")}}");
+                        var
+                    quantity = $('#quantity').val();
+                    addCart(product_id, quantity);
+                    $(".cart").click();
                 });
             </script>
 @endsection

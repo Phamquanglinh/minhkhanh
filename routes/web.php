@@ -26,5 +26,5 @@ Route::get('/profile.html',[\App\Http\Controllers\CustomerController::class,'ind
 Route::post('/profile-save.html',[\App\Http\Controllers\CustomerController::class,'save'])->name("profile.store");
 Route::get('/cart.html',[\App\Http\Controllers\CartController::class,'index'])->name("cart");
 Route::post('/cart.html',[\App\Http\Controllers\CartController::class,'calPrice'])->name('cart.updatePrice');
-Route::post('/cart-add.html',[\App\Http\Controllers\CartController::class,'addCart'])->name('cart.addCart');
+Route::any('/cart-add.html',[\App\Http\Controllers\CartController::class,'addCart'])->name('cart.addCart');
 Route::post('/order-add.html',[\App\Http\Controllers\OrderController::class,'store'])->name('order.add');

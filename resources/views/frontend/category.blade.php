@@ -1,5 +1,5 @@
 @php
-    $title = $name;
+    $title = $thisCat->name;
 @endphp
 @extends("layout.main")
 @section("custom-library")
@@ -13,46 +13,90 @@
 @endsection
 @section("content")
     <div class="banner pb-5">
-        <div class="h2 py-5 mb-4 text-center text-white text-uppercase">{{$name}}</div>
-        <div class="container bg-light rounded">
-            <div class="row text-left ">
-                @foreach($products as $product)
-                    <div class="col-md-3 p-3 col-sm-6 col-12">
-                        <a href="{{route('products',$product->slug)}}" class="text-dark">
-                            <div class="card">
-                                <div class="card-body">
-                                    @php
-                                        $tmp = str_replace(['[',']','"'],"",$product->avatar);
-                                        $product->avatars = explode(",",$tmp);
-                                    @endphp
-                                    <img
-                                        src="{{env('APP_URL')."/".$product->avatars[0]}}"
-                                        class="w-100">
-                                </div>
-                                <div class="card-title px-3">
-                                    <div class="font-weight-bold overflow-hidden">{{$product->name}}</div>
-                                    <div class="text-danger h4">{{number_format($product->price)}} đ</div>
-                                    <div class="text-mute">{{number_format($product->origin_price)}} đ</div>
-                                </div>
-                            </div>
-                        </a>
+        <div class="h2 py-5 mb-4 text-center text-white text-uppercase">{{$thisCat->name}}</div>
+        <div class="row m-0 px-5">
+            <div class="col-md-3 d-md-block d-none">
+                <div>
+                    <div class=" text-left w-100 btn btn-danger rounded-0" type="button" data-toggle="collapse"
+                         data-target="#camera"
+                         aria-expanded="true" aria-controls="camera">
+                        Camera
                     </div>
-                @endforeach
+                    <div class="collapse bg-white" id="camera">
+                        @php
+                            $listCategory = \App\Models\Category::where('type','=',0)->get();
+                        @endphp
+                        @foreach($listCategory as $cat)
+                            <a href="{{route("category",$cat->slug)}}">
+                                <div class="bg-white border-bottom py-2 w-100 btn text-left rounded-0">
+                                    {{$cat->name}}
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+                <div>
+                    <div class=" text-left w-100 btn btn-danger rounded-0" type="button" data-toggle="collapse"
+                         data-target="#elevator"
+                         aria-expanded="true" aria-controls="camera">
+                        Thang máy
+                    </div>
+                    <div class="collapse bg-white" id="elevator">
+                        @php
+                            $listCategory = \App\Models\Category::where('type','=',0)->get();
+                        @endphp
+                        @foreach($listCategory as $cat)
+                            <a href="{{route("category",$cat->slug)}}">
+                                <div class="bg-white border-bottom py-2  w-100 btn text-left rounded-0">
+                                    {{$cat->name}}
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <div class="p-2">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+            <div class="col-md-9 col-12 bg-light rounded">
+                @if($products->count() != 0 )
+                    <div class="row text-left">
+                        @foreach($products as $index => $product)
+                            @if($index >= ($page-1)*$step && $index < ($page*$step))
+                                <div class="col-md-3 p-3 col-sm-6 col-12">
+                                    <a href="{{route('products',$product->slug)}}" class="text-dark">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                @php
+                                                    $tmp = str_replace(['[',']','"'],"",$product->avatar);
+                                                    $product->avatars = explode(",",$tmp);
+                                                @endphp
+                                                <img
+                                                    src="{{env('APP_URL')."/".$product->avatars[0]}}"
+                                                    class="w-100">
+                                            </div>
+                                            <div class="card-title px-3">
+                                                <div class="font-weight-bold overflow-hidden">{{$product->name}}</div>
+                                                <div class="text-danger h4">{{number_format($product->price)}} đ</div>
+                                                <div class="text-mute">{{number_format($product->origin_price)}} đ</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="p-2">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                @for($index=1;$index<($products->count()/$step)+1;$index++)
+                                    <li class="page-item"><a class="page-link"
+                                                             href="{{route("category",[$thisCat->slug,$index])}}">{{$index}}</a>
+                                    </li>
+                                @endfor
+                            </ul>
+                        </nav>
+                    </div>
+                @else
+
+                @endif
             </div>
         </div>
     </div>
