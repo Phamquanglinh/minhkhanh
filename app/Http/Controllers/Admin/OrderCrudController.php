@@ -105,7 +105,6 @@ class OrderCrudController extends CrudController
         $total += $cart->getProduct()->first()->price*$cart->quantity;
        }
 
-        // return view('vendor.order',['order'=>$order,'carts'=>$carts,'total'=>$total]) ;
         return view('vendor.order', ['order' => $order, 'carts' => $carts,'avatar'=>$avatars,'total'=>$total]);
     }
 }
