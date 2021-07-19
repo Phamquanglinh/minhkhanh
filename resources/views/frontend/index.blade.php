@@ -35,10 +35,6 @@
             min-height: 500px;
         }
 
-        @font-face {
-            font-family: "brand";
-            src: url("fontface/VNI-Jamai.TTF");
-        }
 
         .testimonialsRes {
             background: url("{{asset("img/introduction/shanghai.jpg")}}") center center no-repeat;
@@ -74,7 +70,7 @@
                 </li>
             </ul>
         </div>
-        <img src="http://localhost/minhkhanh/frontend/web/img/Sslide.jpg" class="d-block w-100" alt="ads">
+        <img src="{{asset("img/Sslide.jpg")}}" class="d-block w-100" alt="ads">
     </div>
     <!-- Offer-->
     <div class="container">
@@ -364,7 +360,7 @@
                             <div class="carousel-inner">
                                 <!-- Item-1 -->
                                 <div class="carousel-item active text-center">
-                                    <img src="/img/introduction/avatar-1.jpg" alt=""
+                                    <img src="{{asset("img/introduction/avatar-1.jpg")}}" alt=""
                                          class="center-block team">
                                     <h3>Alamin Musa</h3>
                                     <h4>BackEnd Developer</h4>
@@ -374,7 +370,7 @@
                                 </div>
                                 <!-- Item-2 -->
                                 <div class="carousel-item text-center">
-                                    <img src="/img/introduction/avatar-2.jpg" alt=""
+                                    <img src="{{asset("img/introduction/avatar-2.jpg")}}" alt=""
                                          class="center-block team">
                                     <h3>Charlote Kartlyn</h3>
                                     <h4>FrontEnd Developer</h4>
@@ -383,7 +379,7 @@
                                 </div>
                                 <!-- Item-3 -->
                                 <div class="carousel-item text-center">
-                                    <img src="/img/introduction/avatar-3.jpg" alt=""
+                                    <img src="{{asset("img/introduction/avatar-3.jpg")}}" alt=""
                                          class="center-block team">
                                     <h3>William Karma</h3>
                                     <h4>CEO</h4>
@@ -426,7 +422,7 @@
                             của shop..."</p>
 
                         <div class="cd-author">
-                            <img src="/img/introduction/avatar-2.jpg" alt="Author image">
+                            <img src="{{asset("img/introduction/avatar-2.jpg")}}" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>Alamin Musa</li>
                                 <li>BackEnd Developer</li>
@@ -438,7 +434,7 @@
                         <p>"Âm thanh và hình ảnh thích thực sự! Tôi cứ ngỡ là đang xem phim vậy..."</p>
 
                         <div class="cd-author">
-                            <img src="/img/introduction/avatar-3.jpg" alt="Author image">
+                            <img src="{{asset("img/introduction/avatar-3.jpg")}}" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>Charlote Kartlyn</li>
                                 <li>FrontEnd Developer</li>
@@ -451,7 +447,7 @@
                             viên sửa chữa hỏng hóc lần nào. Đáng đồng tiền thực sự."</p>
 
                         <div class="cd-author">
-                            <img src="/img/introduction/avatar-4.jpg" alt="Author image">
+                            <img src="{{asset("img/introduction/avatar-4.jpg")}}" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>William Karma</li>
                                 <li>CEO</li>
@@ -463,7 +459,7 @@
                         <p>"Am thanh rat ro rang. Toi rat la thich shop..."</p>
 
                         <div class="cd-author">
-                            <img src="/img/introduction/avatar-5.jpg" alt="Author image">
+                            <img src="{{asset("img/introduction/avatar-5.jpg")}}" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>Cleopatra</li>
                                 <li>Bác Sĩ</li>
@@ -475,7 +471,7 @@
                         <p>"It's my pleasure to use the product of shop..."</p>
 
                         <div class="cd-author">
-                            <img src="/img/introduction/avatar-6.jpg" alt="Author image">
+                            <img src="{{"img/introduction/avatar-6.jpg"}}" alt="Author image">
                             <ul class="cd-author-info">
                                 <li>Jhin</li>
                                 <li>Vận động viên bắn súng</li>
@@ -502,7 +498,7 @@
                 </div>
                 <div class="col-12 col-sm-12 col-lg-4 col-md-4 d-flex align-items-center justify-content-center">
                     <div class="buttonPoints">
-                        <a href="/site/contact">
+                        <a href="{{route("contact")}}">
                             LIÊN HỆ NGAY
                             <span class="shift">›</span>
                         </a>
@@ -523,32 +519,32 @@
                    <div class="carousel-item active">
                        <div class="row">
                            <div class="col-md-3 active">
-                               <img src="/img/brand/sony.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("/mg/brand/sony.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class="col-md-3">
-                               <img src="/img/brand/hitachi.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/hitachi.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class=" col-md-3">
-                               <img src="/img/brand/lg.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/lg.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class=" col-md-3">
-                               <img src="/img/brand/fpt.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("/img/brand/fpt.png")}}" class="d-block w-100" alt="...">
                            </div>
                        </div>
                    </div>
                    <div class="carousel-item">
                        <div class="row">
                            <div class=" col-md-3">
-                               <img src="/img/brand/hikvision.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/hikvision.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class=" col-md-3">
-                               <img src="/img/brand/samtech.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/samtech.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class=" col-md-3">
-                               <img src="/img/brand/imou.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/imou.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class=" col-md-3">
-                               <img src="/img/brand/logitech.png" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/logitech.png")}}" class="d-block w-100" alt="...">
                            </div>
                        </div>
                    </div>

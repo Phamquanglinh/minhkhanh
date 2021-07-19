@@ -89,7 +89,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bgNavBar sticky-top py-1" id="nav">
     <div class="container font-weight-bold">
         <a href="{{route("index")}}" class="navbar-brand d-md-none"><img
-                src="http://localhost/minhkhanh/frontend/web/img/logoMinhKhanhRespon.png" height="48px" width="auto"
+                src="{{asset("img/logoMinhKhanhRespon.png")}}" height="48px" width="auto"
                 alt="Minh Khanh"></a>
         <button class="navbar-toggler ml-auto text-light border-0" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -107,19 +107,17 @@
                 <!-- Product -->
                 <li class="nav-item dropdown border-md-right">
                     <a class="nav-link dropdown-toggle text-light d-lg-none"
-                       href="http://localhost/minhkhanh/frontend/web/abc" id="categoryDropdown" role="button"
+                        id="categoryDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bars"></i> Sản phẩm
                     </a>
-                    <a class="nav-link dropdown-toggle text-light d-none d-lg-block pr-lg-3"
-                       href="http://localhost/minhkhanh/frontend/web/abc" id="categoryDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-light d-none d-lg-block pr-lg-3" id="categoryDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bars px-md-2"></i> Danh mục sản phẩm
                     </a>
                     <ul class="dropdown-menu shadow-lg" aria-labelledby="categoryDropdown">
                         <!-- Camera -->
-                        <li class="dropdown-item"><a class="nav-link text-dark"
-                                                     href=""><i
+                        <li class="dropdown-item"><a class="nav-link text-dark"><i
                                     class="fas fa-camera"></i> Camera <i
                                     class="fas fa-caret-right float-right px-3"></i></a>
                             <ul class="submenu dropdown-menu shadow-lg">
@@ -249,7 +247,7 @@
                 <!-- Support -->
                 <li class="nav-item dropdown m-0 pr-lg-2 pr-xl-5">
                     <a class="nav-link dropdown-toggle text-light"
-                       href="http://localhost/minhkhanh/frontend/web/abc" role="button" data-toggle="dropdown"
+                        role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-compass d-md-none d-lg-inline-block"></i> Hỗ trợ
                     </a>
