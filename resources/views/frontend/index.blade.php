@@ -519,7 +519,7 @@
                    <div class="carousel-item active">
                        <div class="row">
                            <div class="col-md-3 active">
-                               <img src="{{asset("/mg/brand/sony.png")}}" class="d-block w-100" alt="...">
+                               <img src="{{asset("img/brand/sony.png")}}" class="d-block w-100" alt="...">
                            </div>
                            <div class="col-md-3">
                                <img src="{{asset("img/brand/hitachi.png")}}" class="d-block w-100" alt="...">
