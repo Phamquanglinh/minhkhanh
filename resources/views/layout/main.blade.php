@@ -1,15 +1,19 @@
 <html>
 <head>
     <title>{{isset($title)?$title:'Minh Khánh Group'}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{asset("css/bootstrap.css")}}">
 
     <link href="{{asset("css/css/site.css")}}" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset("favicon.ico")}}"/>
     <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
     <script type="text/javascript" src="{{asset("js/popper.js")}}"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js">
     <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/bootstrap.js")}}"></script>
-    <link href="{{asset("css/fontawesome/CSS/all.css")}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{asset("css/fontawesome/CSS/all.css")}}" rel="stylesheet" type="text/css">--}}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="{{asset("css/css/style.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("css/css/site.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("css/css/navbar.css")}}" rel="stylesheet" type="text/css">

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [\App\Http\Controllers\IndexController::class,'render'])->name("index");
 Route::get('/category/{name}/{page?}', [\App\Http\Controllers\CategoryController::class,'render','name','page'])->where(['name','page'])->name("category");
+Route::get('/tag/{name}/{page?}', [\App\Http\Controllers\TagController::class,'render','name','page'])->where(['name','page'])->name("tag");
 Route::get('/products/{name}',[\App\Http\Controllers\ProductController::class,'render','name'])->where(['name'])->name("products");
 Route::get('/faq.html',[\App\Http\Controllers\FaqController::class,'render'])->name('faq');
 Route::get('/contact.html',function (){
@@ -24,3 +25,6 @@ Route::get('/post/{slug}',[\App\Http\Controllers\PostController::class,'render',
 Route::get('/profile.html',[\App\Http\Controllers\CustomerController::class,'index'])->name("profile.index");
 Route::post('/profile-save.html',[\App\Http\Controllers\CustomerController::class,'save'])->name("profile.store");
 Route::get('/cart.html',[\App\Http\Controllers\CartController::class,'index'])->name("cart");
+Route::post('/cart.html',[\App\Http\Controllers\CartController::class,'calPrice'])->name('cart.updatePrice');
+Route::post('/cart-add.html',[\App\Http\Controllers\CartController::class,'addCart'])->name('cart.addCart');
+Route::post('/order-add.html',[\App\Http\Controllers\OrderController::class,'store'])->name('order.add');

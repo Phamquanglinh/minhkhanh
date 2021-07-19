@@ -94,10 +94,10 @@
                         <div class="add-card">
                             <div class="row">
                                 <div class="col-md-6 col-12 py-1 p-1">
-                                    <div class=" w-100 btn btn-outline-warning">Thêm vào giỏ hàng</div>
+                                    <div class=" w-100 btn btn-outline-warning" id="ajax-add-cart">Thêm vào giỏ hàng</div>
                                 </div>
                                 <div class="col-md-6 col-12 py-1 p-1">
-                                    <div class="w-100 btn btn-outline-danger">Mua ngay</div>
+                                    <div class="w-100 btn btn-outline-danger" id="ajax-buy-now">Mua ngay</div>
                                 </div>
                             </div>
                         </div>
@@ -146,5 +146,30 @@
                         $("#quantity").val(couter);
                     }
                 );
+
+                function addCart(product_id, quantity) {
+                    console.log(product_id);
+                    console.log(quantity);
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('cart.addCart') }}",
+                        data: {"_token": "{{csrf_token()}}", "product_id": product_id, "quantity": quantity},
+
+                        success: function (data) {
+                        }
+                    });
+                }
+                $("#ajax-add-cart").click(function (){
+                   var product_id = {{$product->id}}
+                   var quantity = $('#quantity').val();
+                   addCart(product_id,quantity);
+                });
+
+                $("#ajax-buy-now").click(function (){
+                    var product_id = {{$product->id}}
+                        var quantity = $('#quantity').val();
+                    addCart(product_id,quantity);
+                    window.location.assign("{{route("cart")}}");
+                });
             </script>
 @endsection
