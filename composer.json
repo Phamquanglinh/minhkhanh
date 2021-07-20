@@ -14,7 +14,8 @@
         "intervention/image": "^2.6",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "yish/imgur": "^2.0"
+        "yish/imgur": "^2.0",
+      "ext-http": "*"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'render'])->name("index");
-Route::get('/category/{name}/{page?}', [\App\Http\Controllers\CategoryController::class, 'render', 'name', 'page'])->where(['name', 'page'])->name("category");
-Route::get('/tag/{name}/{page?}', [\App\Http\Controllers\TagController::class, 'render', 'name', 'page'])->where(['name', 'page'])->name("tag");
+Route::any('/category/{name}/{page?}/', [\App\Http\Controllers\CategoryController::class, 'render', 'name', 'page','filter'])->where(['name','page','filter'])->name("category");
+//Route::get('/category/{name}/{page?}?filter={$filter}', [\App\Http\Controllers\CategoryController::class, 'filter', 'name', 'page','filter'])->where(['name','page','filter'])->name("category.filter");
+Route::get('/tag/{name}/{page?}/', [\App\Http\Controllers\TagController::class, 'render', 'name', 'page'])->where(['name', 'page'])->name("tag");
 Route::get('/products/{name}', [\App\Http\Controllers\ProductController::class, 'render', 'name'])->where(['name'])->name("products");
 Route::get('/faq.html', [\App\Http\Controllers\FaqController::class, 'render'])->name('faq');
 Route::get('/contact.html', function () {

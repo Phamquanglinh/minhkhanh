@@ -6,6 +6,7 @@
     <link href="{{asset("css/css/animate.min.css")}}" rel="stylesheet" type="text/css">
     <script src="{{asset("js/masonry.pkgd.min.js")}}"></script>
     <script src="{{asset("js/jquery.flexslider-min.js")}}"></script>
+
     <script src="{{asset("js/main.js")}}"></script>
     <script src="{{asset("js/modernizr.js")}}"></script>
     <style>
@@ -562,8 +563,9 @@
     <div class="pb-5"></div>
 @endsection
 @section("loaded")
-    <script src="{{asset("js/numscroller-1.0.js")}}"></script>
-    <script src="{{asset("js/prism.js")}}"></script>
+
+    <script type="text/javascript" src="{{asset("js/prism.js")}}"></script>
+    <script type="text/javascript" src="{{asset("js/numscroller-1.0.js")}}"></script>
     <script>
         $("#accordion").on("hide.bs.collapse show.bs.collapse", e => {
             $(e.target)

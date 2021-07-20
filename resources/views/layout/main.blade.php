@@ -9,8 +9,10 @@
     <link rel="shortcut icon" href="{{asset("favicon.ico")}}"/>
     <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
     <script type="text/javascript" src="{{asset("js/popper.js")}}"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js">
-        <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>
+{{--    <script src="https://code.jquery.com/jquery-3.1.1.min.js">--}}
+{{--     <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script type="text/javascript" src="{{asset("js/bootstrap.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/notify.min.js")}}"></script>
     {{--    <link href="{{asset("css/fontawesome/CSS/all.css")}}" rel="stylesheet" type="text/css">--}}
@@ -236,7 +238,7 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">
                             <a class="nav-link text-dark"
-                               href="http://localhost/minhkhanh/frontend/web/tool/download">
+                               href="#">
                                 <i class="fas fa-cloud-download-alt"></i> Tải về tài liệu
                             </a>
                         </li>

@@ -34,7 +34,9 @@ class Trade extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public  function categories(){
+        return $this->hasMany(Category::class,'trade_id','id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
