@@ -40,13 +40,24 @@ class FaqCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::addColumn(['name' => 'question', 'label' => 'Câu hỏi']);
-        CRUD::addColumn(['name' => 'answer', 'label' => 'Câu trả lời','type'=>'ckeditor']);
+        CRUD::addColumn(['name' => 'answer', 'label' => 'Câu trả lời', 'type' => 'ckeditor']);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+    }
+
+    /**
+     * Define what happens when the Update operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
     }
 
     /**
@@ -60,23 +71,12 @@ class FaqCrudController extends CrudController
         CRUD::setValidation(FaqRequest::class);
 
         CRUD::addField(['name' => 'question', 'label' => 'Câu hỏi']);
-        CRUD::addField(['name' => 'answer', 'label' => 'Câu trả lời','type'=>'ckeditor']);
+        CRUD::addField(['name' => 'answer', 'label' => 'Câu trả lời', 'type' => 'ckeditor']);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
-    }
-
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
     }
 }

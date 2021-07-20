@@ -509,55 +509,56 @@
         </div>
     </div>
     <!--    Companies We Have as Clients-->
-   <div class="container">
-       <div class="row m-0 text-muted">
-           <h2 class="text-danger text-center col-12 p-5 font-weight-bold fontTitle border-bottom border-danger">ĐỐI TÁC
-               CỦA
-               CHÚNG TÔI</h2>
-           <div id="brand" class="carousel slide" data-bs-ride="carousel">
-               <div class="carousel-inner">
-                   <div class="carousel-item active">
-                       <div class="row">
-                           <div class="col-md-3 active">
-                               <img src="{{asset("img/brand/sony.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                           <div class="col-md-3">
-                               <img src="{{asset("img/brand/hitachi.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                           <div class=" col-md-3">
-                               <img src="{{asset("img/brand/lg.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                           <div class=" col-md-3">
-                               <img src="{{asset("/img/brand/fpt.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                       </div>
-                   </div>
-                   <div class="carousel-item">
-                       <div class="row">
-                           <div class=" col-md-3">
-                               <img src="{{asset("img/brand/hikvision.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                           <div class=" col-md-3">
-                               <img src="{{asset("img/brand/samtech.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                           <div class=" col-md-3">
-                               <img src="{{asset("img/brand/imou.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                           <div class=" col-md-3">
-                               <img src="{{asset("img/brand/logitech.png")}}" class="d-block w-100" alt="...">
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <a class="carousel-control-prev" href="#brand" data-slide="prev">
-                   <i class="fas fa-angle-left fa-2x text-danger"></i>
-               </a>
-               <a class="carousel-control-next" href="#brand" data-slide="next">
-                   <i class="fas fa-angle-right fa-2x text-danger"></i>
-               </a>
-           </div>
-       </div>
-   </div>
+    <div class="container">
+        <div class="row m-0 text-muted">
+            <h2 class="text-danger text-center col-12 p-5 font-weight-bold fontTitle border-bottom border-danger">ĐỐI
+                TÁC
+                CỦA
+                CHÚNG TÔI</h2>
+            <div id="brand" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-3 active">
+                                <img src="{{asset("img/brand/sony.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset("img/brand/hitachi.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class=" col-md-3">
+                                <img src="{{asset("img/brand/lg.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class=" col-md-3">
+                                <img src="{{asset("/img/brand/fpt.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class=" col-md-3">
+                                <img src="{{asset("img/brand/hikvision.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class=" col-md-3">
+                                <img src="{{asset("img/brand/samtech.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class=" col-md-3">
+                                <img src="{{asset("img/brand/imou.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                            <div class=" col-md-3">
+                                <img src="{{asset("img/brand/logitech.png")}}" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#brand" data-slide="prev">
+                    <i class="fas fa-angle-left fa-2x text-danger"></i>
+                </a>
+                <a class="carousel-control-next" href="#brand" data-slide="next">
+                    <i class="fas fa-angle-right fa-2x text-danger"></i>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="pb-5"></div>
 @endsection
 @section("loaded")

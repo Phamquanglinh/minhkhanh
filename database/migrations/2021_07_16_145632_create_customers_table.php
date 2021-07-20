@@ -22,6 +22,7 @@ class CreateCustomersTable extends Migration
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *

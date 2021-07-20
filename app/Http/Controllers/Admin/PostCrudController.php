@@ -50,6 +50,17 @@ class PostCrudController extends CrudController
     }
 
     /**
+     * Define what happens when the Update operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
+    }
+
+    /**
      * Define what happens when the Create operation is loaded.
      *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
@@ -61,25 +72,14 @@ class PostCrudController extends CrudController
 
         CRUD::addField(['name' => 'title', 'label' => 'Tiêu đề']);
         CRUD::addField(['name' => 'slug', 'type' => 'hidden']);
-        CRUD::addField(['name' => 'thumbnail', 'label' => 'Ảnh bìa','type'=>'browse']);
-        CRUD::addField(['name' => 'description', 'label' => 'Tóm tắt','type'=>'textarea']);
-        CRUD::addField(['name' => 'content', 'label' => 'Nội dung','type'=>'ckeditor']);
+        CRUD::addField(['name' => 'thumbnail', 'label' => 'Ảnh bìa', 'type' => 'browse']);
+        CRUD::addField(['name' => 'description', 'label' => 'Tóm tắt', 'type' => 'textarea']);
+        CRUD::addField(['name' => 'content', 'label' => 'Nội dung', 'type' => 'ckeditor']);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
-    }
-
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
     }
 }

@@ -56,7 +56,7 @@ class TagCrudController extends CrudController
             'name' => 'pin',
             'type' => 'select_from_array',
             'label' => 'Ghim trang chủ',
-            'options'=>['Không','Có'],
+            'options' => ['Không', 'Có'],
         ]);
 
 
@@ -65,6 +65,17 @@ class TagCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+    }
+
+    /**
+     * Define what happens when the Update operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
     }
 
     /**
@@ -94,7 +105,7 @@ class TagCrudController extends CrudController
             'name' => 'pin',
             'type' => 'select_from_array',
             'label' => 'Ghim trang chủ',
-            'options'=>['Không','Có'],
+            'options' => ['Không', 'Có'],
         ]);
 
         /**
@@ -102,16 +113,5 @@ class TagCrudController extends CrudController
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
-    }
-
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
     }
 }

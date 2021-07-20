@@ -9,6 +9,12 @@
             background-size: auto 300px;
             background-repeat: no-repeat;
         }
+        .hover-zoom:hover{
+            transition:0.6s;
+            transform: rotate(25deg) scale(1.2);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
     </style>
 @endsection
 @section("content")
@@ -61,24 +67,26 @@
                         @foreach($products as $index => $product)
                             @if($index >= ($page-1)*$step && $index < ($page*$step))
                                 <div class="col-md-3 p-3 col-sm-6 col-12">
-                                    <a href="{{route('products',$product->slug)}}" class="text-dark">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                @php
-                                                    $tmp = str_replace(['[',']','"'],"",$product->avatar);
-                                                    $product->avatars = explode(",",$tmp);
-                                                @endphp
-                                                <img
-                                                    src="{{env('APP_URL')."/".$product->avatars[0]}}"
-                                                    class="w-100">
+                                    <div class="card ">
+                                        <a href="{{route('products',$product->slug)}}" class="text-dark link-style-none ">
+                                            <div class="overflow-hidden ">
+                                                <div class="card-body hover-zoom">
+                                                    @php
+                                                        $tmp = str_replace(['[',']','"'],"",$product->avatar);
+                                                        $product->avatars = explode(",",$tmp);
+                                                    @endphp
+                                                    <img
+                                                        src="{{env('APP_URL')."/".$product->avatars[0]}}"
+                                                        class="w-100">
+                                                </div>
                                             </div>
                                             <div class="card-title px-3">
                                                 <div class="font-weight-bold overflow-hidden">{{$product->name}}</div>
                                                 <div class="text-danger h4">{{number_format($product->price)}} đ</div>
-                                                <div class="text-mute">{{number_format($product->origin_price)}} đ</div>
+                                                <div class="text-secondary"><del>{{number_format($product->origin_price)}} đ</del></div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
                             @endif
                         @endforeach

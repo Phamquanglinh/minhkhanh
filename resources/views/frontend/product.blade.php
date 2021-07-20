@@ -96,15 +96,28 @@
                         </div>
                         <div class="add-card">
                             <div class="row">
-                                <div class="col-md-6 col-12 py-1 p-1">
-                                    <div class=" w-100 btn btn-outline-warning" id="ajax-add-cart">Thêm vào giỏ hàng
+                                @if(backpack_auth()->check())
+                                    <div class="col-md-6 col-12 py-1 p-1">
+                                        <div class=" w-100 btn btn-outline-warning" id="ajax-add-cart">Thêm vào giỏ hàng
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 col-12 py-1 p-1">
-
-                                    <div class="w-100 btn btn-outline-danger" id="ajax-buy-now">Mua ngay</div>
-
-                                </div>
+                                    <div class="col-md-6 col-12 py-1 p-1">
+                                        <div class="w-100 btn btn-outline-danger" id="ajax-buy-now">Mua ngay</div>
+                                    </div>
+                                @else
+                                    <div class="col-md-6 col-12 py-1 p-1">
+                                        <a href="{{route("backpack.auth.login")}}">
+                                            <div class=" w-100 btn btn-outline-warning" id="ajax-add-cart">Thêm vào giỏ
+                                                hàng
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 col-12 py-1 p-1">
+                                        <a href="{{route("backpack.auth.login")}}">
+                                            <div class="w-100 btn btn-outline-danger" id="ajax-buy-now">Mua ngay</div>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -154,7 +167,7 @@
                     }
                 );
 
-                function addCart(product_id, quantity) {
+                function addCart(product_id, quantity, ref = false) {
                     console.log(product_id);
                     console.log(quantity);
                     $.ajax({
@@ -163,6 +176,9 @@
                         data: {"_token": "{{csrf_token()}}", "product_id": product_id, "quantity": quantity},
 
                         success: function (data) {
+                            if(ref){
+                                location.href="{{route("cart")}}";
+                            }
                         }
                     });
                 }
@@ -172,6 +188,7 @@
                         var
                     quantity = $('#quantity').val();
                     addCart(product_id, quantity);
+
                     $(".cart").notify(
                         "Thêm sản phẩm thành công",
                         {
@@ -179,8 +196,8 @@
                             className: 'a btn btn-success px-5 bg-danger',
                             arrowSize: 5,
                             showDuration: 200,
-                            autoHideDelay:2000,
-                            hideDuration:200,
+                            autoHideDelay: 2000,
+                            hideDuration: 200,
                         }
                     );
                 });
@@ -189,8 +206,7 @@
                     var product_id = {{$product->id}}
                         var
                     quantity = $('#quantity').val();
-                    addCart(product_id, quantity);
-                    $(".cart").click();
+                    addCart(product_id, quantity,true);
                 });
             </script>
 @endsection

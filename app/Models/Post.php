@@ -33,8 +33,10 @@ class Post extends Model
     {
         $this->attributes['slug'] = Str::slug($this->title, '-') . '.html';
     }
-    public function viewOnWeb(){
-        return '<a href="'.env("APP_URL").'/post/'.$this->slug.'" class="btn btn-sm btn-link"><i class="la la-edit"></i>Xem trên web</a>';
+
+    public function viewOnWeb()
+    {
+        return '<a href="' . env("APP_URL") . '/post/' . $this->slug . '" class="btn btn-sm btn-link"><i class="la la-edit"></i>Xem trên web</a>';
     }
     /*
     |--------------------------------------------------------------------------

@@ -3145,7 +3145,9 @@ fieldset:disabled a.btn {
 .btn-block + .btn-block {
     margin-top: 0.5rem;
 }
-
+.link-style-none:hover{
+    text-decoration: none;
+}
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {

@@ -41,7 +41,7 @@ class ProductCrudController extends CrudController
     {
 
         $this->crud->addButtonFromModelFunction('line', 'viewweb', 'viewOnWeb', 'beginning');
-        $this->crud->addButtonFromModelFunction('line','a','setThumbnail','beginning');
+        $this->crud->addButtonFromModelFunction('line', 'a', 'setThumbnail', 'beginning');
         CRUD::addColumn(['name' => 'name', 'Label' => 'Tên sản phẩm']);
         CRUD::addColumn(['name' => 'status', 'label' => 'Trạng thái', 'type' => 'select_from_array', 'options' => ['Đã đăng', 'Chưa đăng(Nháp)']]);
         CRUD::addColumn(
@@ -83,6 +83,17 @@ class ProductCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+    }
+
+    /**
+     * Define what happens when the Update operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
     }
 
     /**
@@ -143,16 +154,5 @@ class ProductCrudController extends CrudController
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
-    }
-
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
     }
 }

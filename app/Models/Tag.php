@@ -15,15 +15,15 @@ class Tag extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
+    protected $table = 'tags';
+    protected $guarded = ['id'];
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+
     public function setSlugAttribute()
     {
         $this->attributes['slug'] = Str::slug($this->name, '-') . '.html';
     }
-
-    protected $table = 'tags';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
-    protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -39,8 +39,10 @@ class Tag extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function products(){
-        return $this->belongsToMany(Product::class,'tag_product','tag_id','product_id');
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'tag_product', 'tag_id', 'product_id');
     }
     /*
     |--------------------------------------------------------------------------

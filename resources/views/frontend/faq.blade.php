@@ -77,7 +77,8 @@
                                     <i class="fas fa-chevron-down rorate"></i></p>
                             </a>
                         </div>
-                        <div class="collapse" id="collapse{{$index+1}}" aria-labelledby="heading{{$index+1}}" data-parent="#accordion"
+                        <div class="collapse" id="collapse{{$index+1}}" aria-labelledby="heading{{$index+1}}"
+                             data-parent="#accordion"
                              style="">
                             <div class="card card-body border-top pl-4 p-1">
                                 <ul class="m-0">

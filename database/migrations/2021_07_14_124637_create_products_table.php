@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->string("price");
             $table->string("origin_price");
             $table->string("code");
-           // $table->integer("type");
+            // $table->integer("type");
             $table->timestamps();
             $table->foreign("category_id")->references("id")->on("categories");
             //$table->foreign("trade_id")->references("id")->on("trades");

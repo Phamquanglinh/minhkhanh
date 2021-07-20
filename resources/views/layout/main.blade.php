@@ -10,11 +10,12 @@
     <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
     <script type="text/javascript" src="{{asset("js/popper.js")}}"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js">
-    <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>
+        <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/bootstrap.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/notify.min.js")}}"></script>
-{{--    <link href="{{asset("css/fontawesome/CSS/all.css")}}" rel="stylesheet" type="text/css">--}}
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    {{--    <link href="{{asset("css/fontawesome/CSS/all.css")}}" rel="stylesheet" type="text/css">--}}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="{{asset("css/css/style.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("css/css/site.css")}}" rel="stylesheet" type="text/css">
     <link href="{{asset("css/css/navbar.css")}}" rel="stylesheet" type="text/css">
@@ -108,11 +109,12 @@
                 <!-- Product -->
                 <li class="nav-item dropdown border-md-right">
                     <a class="nav-link dropdown-toggle text-light d-lg-none"
-                        id="categoryDropdown" role="button"
+                       id="categoryDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bars"></i> Sản phẩm
                     </a>
-                    <a class="nav-link dropdown-toggle text-light d-none d-lg-block pr-lg-3" id="categoryDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-light d-none d-lg-block pr-lg-3" id="categoryDropdown"
+                       role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bars px-md-2"></i> Danh mục sản phẩm
                     </a>
@@ -248,7 +250,7 @@
                 <!-- Support -->
                 <li class="nav-item dropdown m-0 pr-lg-2 pr-xl-5">
                     <a class="nav-link dropdown-toggle text-light"
-                        role="button" data-toggle="dropdown"
+                       role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-compass d-md-none d-lg-inline-block"></i> Hỗ trợ
                     </a>

@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        
-        @include('vendor.elfinder.common_scripts')
-        @include('vendor.elfinder.common_styles')
+<head>
 
-        <script type="text/javascript">
-            $().ready(function () {
-                var elf = $('#elfinder').elfinder({
-                    // set your elFinder options here
-                    @if($locale)
-                        lang: '{{ $locale }}', // locale
-                    @endif
-                    customData: { 
-                        _token: '{{ csrf_token() }}'
-                    },
-                    url: '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}',
-                    dialog: {width: 900, modal: true, title: 'Select a file'},
-                    resizable: false,
-                    onlyMimes: @json(unserialize(urldecode(request('mimes')))),
-                    commandsOptions: {
-                        getfile: {
-                            multiple: {{ request('multiple') ? 'true' : 'false' }},
-                            oncomplete: 'destroy'
-                        }
-                    },
-                    getFileCallback: function (file) {
-                        @if (request()->has('multiple') && request()->input('multiple') == 1)
-                            window.parent.processSelectedMultipleFiles(file, '{{ $input_id  }}');
-                        @else
-                            window.parent.processSelectedFile(file.path, '{{ $input_id  }}');
-                        @endif
+    @include('vendor.elfinder.common_scripts')
+    @include('vendor.elfinder.common_styles')
 
-                        parent.jQuery.colorbox.close();
+    <script type="text/javascript">
+        $().ready(function () {
+            var elf = $('#elfinder').elfinder({
+                // set your elFinder options here
+                @if($locale)
+                lang: '{{ $locale }}', // locale
+                @endif
+                customData: {
+                    _token: '{{ csrf_token() }}'
+                },
+                url: '{{ route("elfinder.connector") }}',  // connector URL
+                soundPath: '{{ asset($dir.'/sounds') }}',
+                dialog: {width: 900, modal: true, title: 'Select a file'},
+                resizable: false,
+                onlyMimes: @json(unserialize(urldecode(request('mimes')))),
+                commandsOptions: {
+                    getfile: {
+                        multiple: {{ request('multiple') ? 'true' : 'false' }},
+                        oncomplete: 'destroy'
                     }
-                }).elfinder('instance');
-            });
-        </script>
+                },
+                getFileCallback: function (file) {
+                    @if (request()->has('multiple') && request()->input('multiple') == 1)
+                    window.parent.processSelectedMultipleFiles(file, '{{ $input_id  }}');
+                    @else
+                    window.parent.processSelectedFile(file.path, '{{ $input_id  }}');
+                    @endif
 
-    </head>
-    <body>
+                    parent.jQuery.colorbox.close();
+                }
+            }).elfinder('instance');
+        });
+    </script>
 
-        <!-- Element where elFinder will be created (REQUIRED) -->
-        <div id="elfinder"></div>
+</head>
+<body>
 
-    </body>
+<!-- Element where elFinder will be created (REQUIRED) -->
+<div id="elfinder"></div>
+
+</body>
 </html>

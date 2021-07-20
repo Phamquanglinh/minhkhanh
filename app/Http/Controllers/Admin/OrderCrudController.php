@@ -63,6 +63,17 @@ class OrderCrudController extends CrudController
     }
 
     /**
+     * Define what happens when the Update operation is loaded.
+     *
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
+    }
+
+    /**
      * Define what happens when the Create operation is loaded.
      *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
@@ -81,30 +92,19 @@ class OrderCrudController extends CrudController
          */
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
-    }
-
     protected function showDetailsRow($id)
     {
-        $total =0;
+        $total = 0;
         $avatars = [];
         $order = Order::find($id);
         $carts = $order->carts()->get();
 
-       foreach ($carts as $index => $cart){
-        $tmp = str_replace(['[', ']', '"'], "", $cart->getProduct()->first()->avatar);
-        $avatars[$index] = explode(",", $tmp)[0];
-        $total += $cart->getProduct()->first()->price*$cart->quantity;
-       }
+        foreach ($carts as $index => $cart) {
+            $tmp = str_replace(['[', ']', '"'], "", $cart->getProduct()->first()->avatar);
+            $avatars[$index] = explode(",", $tmp)[0];
+            $total += $cart->getProduct()->first()->price * $cart->quantity;
+        }
 
-        return view('vendor.order', ['order' => $order, 'carts' => $carts,'avatar'=>$avatars,'total'=>$total]);
+        return view('vendor.order', ['order' => $order, 'carts' => $carts, 'avatar' => $avatars, 'total' => $total]);
     }
 }
