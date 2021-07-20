@@ -9,8 +9,8 @@
     <link rel="shortcut icon" href="{{asset("favicon.ico")}}"/>
     <link rel="icon" type="image/x-icon" href="{{asset("favicon.ico")}}"/>
     <script type="text/javascript" src="{{asset("js/popper.js")}}"></script>
-{{--    <script src="https://code.jquery.com/jquery-3.1.1.min.js">--}}
-{{--     <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>--}}
+    {{--    <script src="https://code.jquery.com/jquery-3.1.1.min.js">--}}
+    {{--     <script type="text/javascript" src="{{asset("js/jquery.js")}}"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="{{asset("js/bootstrap.js")}}"></script>
@@ -39,6 +39,27 @@
             opacity: 1;
             transform: scale(1.2);
             transition: 0.5s;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu a::after {
+            transform: rotate(
+                -90deg
+            );
+            position: absolute;
+            right: 6px;
+            top: 8px;
+            font-size: 20px;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-left: .1rem;
+            margin-right: .1rem;
         }
     </style>
     @yield("custom-library")
@@ -108,24 +129,19 @@
                             class="fas fa-home"><span class="d-md-none"> TRANG CHỦ</span></i></a>
 
                 </li>
-                <!-- Product -->
                 <li class="nav-item dropdown border-md-right">
-                    <a class="nav-link dropdown-toggle text-light d-lg-none"
-                       id="categoryDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-white d-lg-block d-none" id="navbarDropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bars"></i> Danh mục sản phẩm
+                    </a>
+                    <a class="nav-link dropdown-toggle text-white d-lg-none d-block" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bars"></i> Sản phẩm
                     </a>
-                    <a class="nav-link dropdown-toggle text-light d-none d-lg-block pr-lg-3" id="categoryDropdown"
-                       role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bars px-md-2"></i> Danh mục sản phẩm
-                    </a>
-                    <ul class="dropdown-menu shadow-lg" aria-labelledby="categoryDropdown">
-                        <!-- Camera -->
-                        <li class="dropdown-item"><a class="nav-link text-dark"><i
-                                    class="fas fa-camera"></i> Camera <i
-                                    class="fas fa-caret-right float-right px-3"></i></a>
-                            <ul class="submenu dropdown-menu shadow-lg">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle dropright  " href="#">Camera</a>
+                            <ul class="dropdown-menu">
                                 @php($cameras = \App\Models\Category::where('type','=',0)->get())
                                 @foreach($cameras as $camera)
                                     <li><a class="dropdown-item"
@@ -134,11 +150,9 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <!-- Elevator -->
-                        <li class="dropdown-item"><a class="nav-link text-dark"><i
-                                    class="fas fa-hotel"></i> Thang máy <i
-                                    class="fas fa-caret-right float-right px-3"></i></a>
-                            <ul class="submenu dropdown-menu shadow-lg">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle dropright  " href="#">Thang máy</a>
+                            <ul class="dropdown-menu">
                                 @php($cameras = \App\Models\Category::where('type','=',1)->get())
                                 @foreach($cameras as $camera)
                                     <li><a class="dropdown-item"
@@ -478,6 +492,23 @@
         </div>
     </div>
 </footer>
+<script>
+    $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
+        }
+        var $subMenu = $(this).next('.dropdown-menu');
+        $subMenu.toggleClass('show');
+
+
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+            $('.dropdown-submenu .show').removeClass('show');
+        });
+
+
+        return false;
+    });
+</script>
 @yield("loaded")
 </body>
 </html>
