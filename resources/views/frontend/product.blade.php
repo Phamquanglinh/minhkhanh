@@ -172,12 +172,12 @@
                     console.log(quantity);
                     $.ajax({
                         type: 'POST',
-                        url: "{{ route('cart.addCart') }}",
+                        url: "{{url("/cart-add.html")}}",
                         data: {"_token": "{{csrf_token()}}", "product_id": product_id, "quantity": quantity},
 
                         success: function (data) {
                             if(ref){
-                                location.href="{{route("cart")}}";
+                                location.href="{{url("/cart.html")}}";
                             }
                         }
                     });
