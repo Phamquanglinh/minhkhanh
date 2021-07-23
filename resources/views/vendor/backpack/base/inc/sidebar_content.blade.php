@@ -48,4 +48,5 @@
         <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
 
 
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('report') }}'><i class='nav-icon la la-question'></i> Reports</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('report') }}'><i class="las la-reply-all"></i>
+        Phản hồi</a></li>
