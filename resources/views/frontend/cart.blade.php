@@ -298,7 +298,7 @@
             function updatePrice(id, quantity) {
                 $.ajax({
                     type: 'POST',
-                    url: "{{ route('cart.updatePrice') }}",
+                    url: "{{ env("app_url")."/cart.html" }}",
                     data: {"_token": "{{csrf_token()}}", "id": id, "quantity": quantity},
 
                     success: function (data) {
