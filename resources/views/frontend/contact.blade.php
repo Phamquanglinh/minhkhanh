@@ -16,15 +16,30 @@
                         chúng tôi. Cảm ơn bạn!</h5>
                 </div>
             </div>
+            @if (session('success'))
+               <script>
+                   $.notify(
+                       "Gửi thành công",
+                       {
+                           position: "left",
+                           className: 'a btn btn-success px-5 bg-success',
+                           arrowSize: 5,
+                           showDuration: 200,
+                           autoHideDelay: 2000,
+                           hideDuration: 200,
+                       }
+                   );
+               </script>
+            @endif
             <div class="row my-3">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <h2 class="text-center p-2 text-danger mb-3">Gửi thông tin liên hệ</h2>
                     <div class="float-start">
-                        <form id="w0" action="#" method="post">
+                        <form id="w0" action="{{route("send.report")}}" method="post">
                             @csrf
                             <div class="form-group field-contactform-name required has-error">
                                 <label class="control-label" for="contactform-name">Họ và tên</label>
-                                <input type="text" id="contactform-name" class="form-control" name="ContactForm[name]"
+                                <input type="text" id="contactform-name" class="form-control" name="name"
                                        autofocus="" placeholder="Nguyễn Văn A" aria-required="true"
                                        aria-invalid="true" required>
                             </div>
@@ -33,7 +48,7 @@
                                     <div class="form-group field-contactform-email required">
                                         <label class="control-label" for="contactform-email">Nhập email</label>
                                         <input type="email" id="contactform-email" class="form-control"
-                                               name="ContactForm[email]" placeholder="minhkhanhgroups.com"
+                                               name="email" placeholder="minhkhanhgroups.com"
                                                aria-required="true" required>
                                     </div>
                                 </div>
@@ -42,7 +57,7 @@
                                     <div class="form-group field-contactform-phone required">
                                         <label class="control-label" for="contactform-phone">Số điện thoại</label>
                                         <input type="text" id="contactform-phone" class="form-control"
-                                               name="ContactForm[phone]" placeholder="(+84)123456789"
+                                               name="phone" placeholder="(+84)123456789"
                                                aria-required="true" required>
                                     </div>
                                 </div>
@@ -51,13 +66,13 @@
                             <div class="form-group field-contactform-subject required">
                                 <label class="control-label" for="contactform-subject">Chủ đề</label>
                                 <input type="text" id="contactform-subject" class="form-control"
-                                       name="ContactForm[subject]" placeholder="Bạn đang gặp vấn đề gì?"
+                                       name="topic" placeholder="Bạn đang gặp vấn đề gì?"
                                        aria-required="true" required>
                             </div>
                             <div class="form-group field-contactform-content required">
                                 <label class="control-label" for="contactform-content">Nội dung chi tiết</label>
-                                <textarea id="contactform-content" class="form-control" name="ContactForm[content]"
-                                          rows="6" aria-required="true" required></textarea>
+                                <textarea id="contactform-content" class="form-control" name="contents"
+                                          rows="6" aria-required="true" ></textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success col-12" name="contact-button">Gửi</button>
@@ -65,11 +80,10 @@
 
                         </form>
                     </div>
-
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 d-none d-md-block">
                     <div class="text-center">
-                        <img src="http://localhost/minhkhanh/frontend/web/img/favicon.ico" alt="minhkhanhgroup"
+                        <img src="{{asset("favicon.ico")}}" alt="minhkhanhgroup"
                              class="rounded-circle" width="88px" height="88px">
                         <h3 class="text-danger pt-2">MINHKHANH-GROUP</h3>
                     </div>

@@ -22,6 +22,7 @@ Route::get('/faq.html', [\App\Http\Controllers\FaqController::class, 'render'])-
 Route::get('/contact.html', function () {
     return view("frontend.contact");
 })->name("contact");
+Route::post('/contact/save.html', [\App\Http\Controllers\ReportController::class, 'save'])->name('send.report');
 Route::get('/recommend.html', [\App\Http\Controllers\ListPostController::class, 'render'])->name('recommend');
 Route::get('/post/{slug}', [\App\Http\Controllers\PostController::class, 'render', 'slug'])->where(['slug'])->name('post');
 Route::get('/profile.html', [\App\Http\Controllers\CustomerController::class, 'index'])->name("profile.index");
@@ -31,4 +32,5 @@ Route::post('/cart.html', [\App\Http\Controllers\CartController::class, 'calPric
 Route::any('/cart-add.html', [\App\Http\Controllers\CartController::class, 'addCart'])->name('cart.addCart');
 Route::get('/cart.html/{id}/delete', [\App\Http\Controllers\CartController::class, 'removeCart','id'])->name('cart.delete');
 Route::post('/order-add.html', [\App\Http\Controllers\OrderController::class, 'store'])->name('order.add');
+
 
