@@ -175,10 +175,10 @@
                         url: "{{env("app_url")."/cart-add.html"}}",
                         data: {"_token": "{{csrf_token()}}", "product_id": product_id, "quantity": quantity},
 
-                        success: function (data) {
+
                             if(ref){
                                 location.href="{{env("app_url")."/cart.html"}}";
-                            }
+
                         }
                     });
                 }
