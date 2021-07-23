@@ -32,5 +32,6 @@ Route::post('/cart.html', [\App\Http\Controllers\CartController::class, 'calPric
 Route::any('/cart-add.html', [\App\Http\Controllers\CartController::class, 'addCart'])->name('cart.addCart');
 Route::get('/cart.html/{id}/delete', [\App\Http\Controllers\CartController::class, 'removeCart','id'])->name('cart.delete');
 Route::post('/order-add.html', [\App\Http\Controllers\OrderController::class, 'store'])->name('order.add');
+Route::get('/document.html/{page?}', [\App\Http\Controllers\DocumentController::class, 'index','page'])->where(['page'])->name('document');
 
 

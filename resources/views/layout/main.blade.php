@@ -252,7 +252,7 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">
                             <a class="nav-link text-dark"
-                               href="#">
+                               href="{{route("document")}}">
                                 <i class="fas fa-cloud-download-alt"></i> Tải về tài liệu
                             </a>
                         </li>

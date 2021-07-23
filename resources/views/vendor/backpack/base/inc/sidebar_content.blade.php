@@ -39,7 +39,12 @@
             class='nav-icon la la-user-secret'></i> Khách hàng</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('order') }}'><i
             class='nav-icon la la-file-invoice-dollar'></i> Đơn hàng</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('report') }}'><i class="nav-icon las la-reply-all"></i>
+        Phản hồi</a></li>
 <li class="nav-title bg-gray-400">Hệ thống</li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('document') }}'><i class="nav-icon las la-file-download"></i>
+        Tài liệu</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('faq') }}'><i class='nav-icon la la-question-circle'></i>
         Câu hỏi thường gặp</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('post') }}'><i class='nav-icon la la-pager'></i> Bài viết
@@ -48,5 +53,4 @@
         <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
 
 
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('report') }}'><i class="las la-reply-all"></i>
-        Phản hồi</a></li>
+
