@@ -176,11 +176,11 @@
                         data: {"_token": "{{csrf_token()}}", "product_id": product_id, "quantity": quantity},
 
 
-                            if(ref){
-                                location.href="{{env("app_url")."/cart.html"}}";
-
-                        }
+                            
                     });
+                    if(ref){
+                        location.href="{{env("app_url")."/cart.html"}}";
+                        }
                 }
 
                 $("#ajax-add-cart").click(function () {
