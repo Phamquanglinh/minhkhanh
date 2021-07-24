@@ -174,13 +174,10 @@
                         type: 'POST',
                         url: "{{env("app_url")."/cart-add.html"}}",
                         data: {"_token": "{{csrf_token()}}", "product_id": product_id, "quantity": quantity},
-
-
-                            
                     });
-                    if(ref){
-                        location.href="{{env("app_url")."/cart.html"}}";
-                        }
+                    if (ref) {
+                        location.href = "{{env("app_url")."/cart.html"}}";
+                    }
                 }
 
                 $("#ajax-add-cart").click(function () {
@@ -206,7 +203,7 @@
                     var product_id = {{$product->id}}
                         var
                     quantity = $('#quantity').val();
-                    addCart(product_id, quantity,true);
+                    addCart(product_id, quantity, true);
                 });
             </script>
 @endsection

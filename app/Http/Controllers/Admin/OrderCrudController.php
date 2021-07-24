@@ -54,6 +54,9 @@ class OrderCrudController extends CrudController
         ]);
         CRUD::addColumn(['name' => 'phone', 'type' => 'phone', 'label' => 'Số điện thoại']);
         CRUD::addColumn(['name' => 'address', 'type' => 'text', 'label' => 'Địa chỉ']);
+        CRUD::addColumn(['name' => 'code', 'type' => 'text', 'label' => 'Mã đơn']);
+        CRUD::addColumn(['name' => 'status', 'type' => 'select_from_array', 'label' => 'Trạng thái','options'=>['Chưa giao','Đang giao hàng','Đã giao','Đã hủy','Đã hoàn trả']]);
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -83,7 +86,8 @@ class OrderCrudController extends CrudController
     {
         CRUD::setValidation(OrderRequest::class);
 
-        CRUD::setFromDb(); // fields
+        CRUD::addField(['name' => 'status', 'type' => 'select_from_array', 'label' => 'Trạng thái','options'=>['Chưa giao','Đang giao hàng','Đã giao','Đã hủy','Đã hoàn trả']]);
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -1,6 +1,7 @@
 @php
     $title = "Giỏ hàng của ".backpack_user()->name;
     $cartList = [];
+
 @endphp
 @extends("layout.main")
 @section("custom-library")
@@ -18,7 +19,12 @@
 @section("content")
     <div class="container">
         <!--Section: Block Content-->
-        @if($carts->count() > 0 )
+        @if (session('reported'))
+            <div class="alert alert-success">
+                {{ session('reported') }}
+            </div>
+        @endif
+        @if($carts->where('order_id','=',null)->count() > 0 )
             <section>
                 <!--Grid row-->
                 <div class="row">
@@ -223,10 +229,11 @@
                     </div>
                 </div>
             </section>
-    @else
-            <div class="container">
+        @else
+            <div class="container text-center">
                 <div class="text-danger pt-4">
-                    Giỏ hàng trống , hãy quay lại tìm kiếm sản phẩm !
+                    <img src="https://i.pinimg.com/originals/85/2f/49/852f494d72637092dcef5e11afeabd58.gif">
+                   <div class="h5"> Giỏ hàng trống , hãy quay lại tìm kiếm sản phẩm !</div>
                 </div>
             </div>
     @endif
@@ -271,6 +278,171 @@
     <div class="container">
         <div class="pt-4">
             <h5 class="mb-4">Lịch sử đơn hàng</h5>
+            <div id="accordion">
+                @foreach($historyOrders as $index => $order)
+                    <div class="card">
+                        <div class="" id="heading{{$index}}">
+                            <h5 class="mb-0">
+                                <button class="w-100 btn bg-danger p-2 text-white d-flex justify-content-between"
+                                        data-toggle="collapse" data-target="#collapse{{$index}}" aria-expanded="true"
+                                        aria-controls="collapse{{$index}}">
+                                    Mã đơn hàng :#{{$order->code}}
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse{{$index}}" class="collapse {{$index==0?"show":""}}"
+                             aria-labelledby="headingOne"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 col-12">
+                                        @php
+                                            $hisCarts = $order->carts()->get();
+                                        @endphp
+                                        @foreach($hisCarts as $cart)
+                                            <div class="font-weight-bold">{{$cart->getProduct()->first()->name}}
+                                                x {{$cart->quantity}}</div>
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-6 col-12">
+                                                    <img src="{{$cart->getProduct()->first()->getThumbnail()}}"
+                                                         class="w-100">
+                                                </div>
+                                                <div class="text-danger col-md-9 col-sm-6 col-12">
+                                                    <div>{{number_format($cart->getProduct()->first()->price)}} đ</div>
+                                                    <div>Danh mục</div>
+                                                    <div>
+                                                        <a href="{{route("category",$cart->getProduct()->first()->category()->first()->slug)}}">
+                                                            {{$cart->getProduct()->first()->category()->first()->name}}
+                                                        </a></div>
+                                                </div>
+                                            </div>
+                                            @foreach($cart->getProduct()->first()->tags()->get() as $tag)
+                                                <span class="badge badge-danger">{{$tag->name}}</span>
+                                            @endforeach
+                                            <hr>
+                                        @endforeach
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="bg-light">
+                                            <div>Ngày đặt : {{$order->created_at}}</div>
+                                            <div>Địa chỉ giao hàng : {{$order->address}}</div>
+                                            <div>Số điện thoại : {{$order->phone}}</div>
+                                            <div>Lời nhắn : {{$order->note}}</div>
+                                            <div class="py-2">
+                                                @switch($order->status)
+                                                    @case(0)
+                                                    <div class="badge badge-primary">Chưa giao hàng</div>
+                                                    @break
+                                                    @case(1)
+                                                    <div class="badge badge-info">Đang giao hàng</div>
+                                                    @break
+                                                    @case(2)
+                                                    <div class="badge badge-success">Đã giao hàng</div>
+                                                    @break
+                                                    @case(3)
+                                                    <div class="badge badge-danger">Đã hủy</div>
+                                                    @break
+                                                    @case(4)
+                                                    <div class="badge badge-secondary">Đã hoàn trả</div>
+                                                    @break
+                                                @endswitch
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="bg-light">
+                                            @if($order->status >= 2)
+                                            <button type="button" class="response btn btn-secondary w-100 my-1"
+                                                    data-toggle="modal"
+                                                    value="{{$order->code}}" data-target="#report">
+                                                <i class="fas fa-warning"></i>Phản hồi đánh giá
+                                            </button>
+                                            @endif
+                                            @if($order->status == 2)
+                                                <button type="button" class="refund btn btn-danger w-100 my-1"
+                                                        data-toggle="modal"
+                                                        value="{{$order->code}}" data-target="#refund">
+                                                    <i class="fas fa-warning"></i>Yêu cầu đổi trả hàng
+                                                </button>
+                                            @endif
+                                            @if($order->status == 0)
+                                                <button type="button" class="btn btn-danger w-100 my-1">
+                                                    <i class="fas fa-close"></i>Hủy đơn hàng
+                                                </button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            {{--            MODEL REPORT--}}
+            <div class="modal fade" id="report" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Phản hồi sản phẩm</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{route("order.report")}}" method="post">
+                            @csrf
+                            <input name="name" value="{{backpack_user()->name}}" hidden>
+                            <input name="email" value="{{backpack_user()->email}}" hidden>
+                            <input name="phone" value="{{isset($customer)?$customer->phone:""}}" hidden>
+                            <input name="topic" id ="report-topic" value="" hidden>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control" name="contents" id="content-rp"
+                                              placeholder="Phản hồi của bạn"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-primary">Gửi phản hồi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{--            END REPORT--}}
+            {{--            MODEL REFUND--}}
+            <div class="modal fade" id="refund" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Yêu cầu đổi trả hàng</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{route("order.refund")}}" method="post">
+                            @csrf
+                            <div class="modal-body">
+                                <input name="name" value="{{backpack_user()->name}}" hidden>
+                                <input name="email" value="{{backpack_user()->email}}" hidden>
+                                <input name="phone" value="{{isset($customer)?$customer->phone:""}}" hidden>
+                                <input name="topic" id="refund-topic"value="Yêu cầu đổi trả #ASAJ" hidden>
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control" name="contents" id="content-rp"
+                                              placeholder="Lý do hoàn trả"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{--            END REFUND--}}
         </div>
     </div>
 @endsection
@@ -278,6 +450,17 @@
     <script>
         $(document).ready(function () {
             $(".cart").hide();
+
+            $(".response").click(function (){
+               var  sdata = $(this).val();
+               $("#report-topic").val(sdata);
+
+            });
+            $(".refund").click(function (){
+                var  sdata = $(this).val();
+                $("#refund-topic").val(sdata);
+
+            });
 
             function formatNumber(num) {
                 return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')

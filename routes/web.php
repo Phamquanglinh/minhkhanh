@@ -23,6 +23,8 @@ Route::get('/contact.html', function () {
     return view("frontend.contact");
 })->name("contact");
 Route::post('/contact/save.html', [\App\Http\Controllers\ReportController::class, 'save'])->name('send.report');
+Route::post('/contact/report.html', [\App\Http\Controllers\ReportController::class, 'report'])->name('order.report');
+Route::post('/contact/refund.html', [\App\Http\Controllers\ReportController::class, 'refund'])->name('order.refund');
 Route::get('/recommend.html', [\App\Http\Controllers\ListPostController::class, 'render'])->name('recommend');
 Route::get('/post/{slug}', [\App\Http\Controllers\PostController::class, 'render', 'slug'])->where(['slug'])->name('post');
 Route::get('/profile.html', [\App\Http\Controllers\CustomerController::class, 'index'])->name("profile.index");

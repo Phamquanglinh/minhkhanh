@@ -19,4 +19,26 @@ class ReportController extends Controller
         Report::create($requestData);
         return redirect()->back()->with('success','success');
     }
+    public function report(Request $request){
+        $data = [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'topic'=>"Phản hồi  về đơn hàng ".$request->topic,
+            'content'=>$request->contents,
+        ];
+        Report::create($data);
+        return redirect()->back()->with("reported",'Đã gửi phản hồi');
+    }
+    public function refund(Request $request){
+        $data = [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'topic'=>"Yêu cầu đổi trả đơn hàng ".$request->topic,
+            'content'=>$request->contents,
+        ];
+        Report::create($data);
+        return redirect()->back()->with("reported",'Đã gửi yêu cầu');
+    }
 }

@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -22,6 +23,7 @@ class OrderController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'note' => $request->note,
+            'code'=>Str::random(12),
         ];
         $order = Order::create($data);
 

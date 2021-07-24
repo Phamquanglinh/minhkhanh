@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -22,7 +23,10 @@ class CartController extends Controller
             $tmp = str_replace(['[', ']', '"'], "", $product_img);
             $cart->avatar = explode(",", $tmp)[0];
         }
-        return view("frontend.cart", ['carts' => $carts, 'customer' => $customer]);
+        $order = Order::where('user_id','=',backpack_user()->id)->orderBy("created_at","DESC")->get();
+
+
+        return view("frontend.cart", ['historyOrders'=>$order,'carts' => $carts, 'customer' => $customer]);
     }
 
     public function calPrice(Request $request)

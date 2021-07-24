@@ -68,7 +68,12 @@ class Product extends Model
         width: auto;
         border-radius: 3px;">';
     }
-
+    public function getThumbnail(){
+        $list = $this->attributes['avatar'];
+        $tmp = str_replace(['[', ']', '"'], "", $list);
+        $avatars = explode(",", $tmp)[0];
+        return url(str_replace("\\","/",$avatars));
+    }
     public function viewOnWeb()
     {
         return '<a href="' . env("APP_URL") . '/products/' . $this->slug . '" class="btn btn-sm btn-link"><i class="la la-edit"></i>Xem trên web</a>';

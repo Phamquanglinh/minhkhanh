@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->string("phone");
             $table->string("address");
             $table->string("note")->nullable();
+            $table->string("status")->default(0);
+            $table->string("code");
             $table->timestamps();
             $table->foreign("user_id")->references("id")->on("users");
         });
