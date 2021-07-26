@@ -13,12 +13,15 @@ class CreateTradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('trades', function (Blueprint $table) {
-            $table->id();
-            $table->string("name");
-            $table->integer("type")->default(1);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('trademark')) {
+            Schema::create('trademark', function (Blueprint $table) {
+                $table->id();
+                $table->string("name");
+                $table->integer("type")->comment("1: Camera, 2: Elevator, 3: Recorder");
+                $table->integer("status")->default(1)->comment("0: inactive, 1: active");
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -28,6 +31,6 @@ class CreateTradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trades');
+        Schema::dropIfExists('trademark');
     }
 }

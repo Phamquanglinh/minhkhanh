@@ -27,13 +27,13 @@
         }
 
         .red-background {
-            background-image: url("{{asset("img/introduction/4K-red-bg.jpg")}}");
+            background-image: url("{{asset("img/introduction/ideas-bg.png")}}");
             min-height: 500px;
         }
 
         .ideas-background {
-            background-image: url("{{asset("img/introduction/ideas-bg.jpg")}}");
-            min-height: 500px;
+            background-image: url("{{asset("img/introduction/ideas-bg.png")}}");
+            /*min-height: 500px;*/
         }
 
 
@@ -491,7 +491,7 @@
     </div>
     <!--    Have any ideas in your mind?-->
     <div class="p-5 ideas-background row-full text-white main">
-        <div class="container">
+        <div class="container p-5">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 text-center text-md-left">
                     <h1 id="idea"><b><i>BẠN CÓ Ý TƯỞNG ???</i></b></h1>
