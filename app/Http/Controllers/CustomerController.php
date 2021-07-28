@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -50,5 +51,18 @@ class CustomerController extends Controller
             return redirect()->back()->with('success', 'Cập nhật thông tin thành công');
         }
 
+    }
+    public function changePassword(Request $request){
+        $user = User::where('id','=',backpack_user()->id)->first();
+        if(Hash::check($request->oldPassword,$user->password)){
+            if($request->newPassword == $request->rePassword){
+                User::where('id','=',backpack_user()->id)->update(['password'=>Hash::make($request->newPassword)]);
+                return redirect()->back()->with('success',"Đổi mật khẩu thành công");
+            }else{
+                return redirect()->back()->with('match-password',"Mật khẩu mới không khớp với mật khẩu nhập lại");
+            }
+        }else{
+            return redirect()->back()->with('incorrect-password',"Mật khẩu cũ không chính xác");
+        }
     }
 }

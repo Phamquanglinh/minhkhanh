@@ -29,6 +29,7 @@ Route::get('/recommend.html', [\App\Http\Controllers\ListPostController::class, 
 Route::get('/post/{slug}', [\App\Http\Controllers\PostController::class, 'render', 'slug'])->where(['slug'])->name('post');
 Route::get('/profile.html', [\App\Http\Controllers\CustomerController::class, 'index'])->name("profile.index");
 Route::post('/profile-save.html', [\App\Http\Controllers\CustomerController::class, 'save'])->name("profile.store");
+Route::post("/change-password",[\App\Http\Controllers\CustomerController::class,'changePassword'])->name("change.password");
 Route::get('/cart.html', [\App\Http\Controllers\CartController::class, 'index'])->name("cart");
 Route::post('/cart.html', [\App\Http\Controllers\CartController::class, 'calPrice'])->name('cart.updatePrice');
 Route::any('/cart-add.html', [\App\Http\Controllers\CartController::class, 'addCart'])->name('cart.addCart');

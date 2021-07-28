@@ -11,7 +11,7 @@
                     </div>
                 @endif
                 @if (session('fail'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-danger">
                         {{ session('fail') }}
                     </div>
                 @endif
@@ -78,32 +78,34 @@
             <div class="col-md-6 col-12 bg-light rounded">
                 <div class="h2 pt-5">Đổi mật khẩu</div>
                 <hr>
-                <form action="#" method="post">
+                <form action="{{route("change.password")}}" method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="exampleInputPassword1">Mật khẩu cũ</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" name="old_password"
-                               placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="oldPassword"
+                               placeholder="Password" required>
                         @if (session('incorrect-password'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-danger">
                                 {{ session('incorrect-password') }}
                             </div>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword2">Mật khẩu mới</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2" name="new_password"
-                               placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword2" name="newPassword"
+                               placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword3">Mật khẩu nhập lại mật khẩu</label>
-                        <input type="password" class="form-control" id="exampleInputPassword3" name="re_password"
-                               placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword3" name="rePassword"
+                               placeholder="Password" required>
                         @if (session('match-password'))
                             <div class="alert alert-success">
-                                {{ session('mactch-password') }}
+                                {{ session('match-password') }}
                             </div>
                         @endif
                     </div>
+                    <button type="submit" class="btn btn-danger">Đổi mật khẩu</button>
                 </form>
             </div>
         </div>
