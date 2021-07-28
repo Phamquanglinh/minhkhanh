@@ -18,61 +18,61 @@ class CategoryTableSeeder extends Seeder
             [
                 'name' => 'HDCVI',
                 'slug' => 'hdcvi',
-                'type' => 1,
+                'type' => 0,
                 'trademark_id' => '1'
             ],
             [
                 'name' => 'IMOU Wifi',
                 'slug' => 'imou-wifi',
-                'type' => 1,
+                'type' => 0,
                 'trademark_id' => '1'
             ],
             [
                 'name' => 'DAHUA IP',
                 'slug' => 'dahua-ip',
-                'type' => 1,
+                'type' => 0,
                 'trademark_id' => '1'
             ],
             [
                 'name' => 'HDCVI Recorder',
                 'slug' => 'hdcvi-recorder',
-                'type' => 3,
+                'type' => 2,
                 'trademark_id' => '1'
             ],
             [
                 'name' => 'IP Recorder',
                 'slug' => 'ip-recorder',
-                'type' => 3,
+                'type' => 2,
                 'trademark_id' => '1'
             ],
             [
                 'name' => 'DVR Recorder',
                 'slug' => 'dvr-recorder',
-                'type' => 3,
+                'type' => 2,
                 'trademark_id' => '2'
             ],
             [
                 'name' => 'EZVIZ',
                 'slug' => 'exviz',
-                'type' => 1,
+                'type' => 0,
                 'trademark_id' => '2'
             ],
             [
                 'name' => 'HIKVISION IP',
                 'slug' => 'hik-ip',
-                'type' => 1,
+                'type' => 0,
                 'trademark_id' => '2'
             ],
             [
                 'name' => 'NAS Recorder',
                 'slug' => 'nas-recorder',
-                'type' => 3,
+                'type' => 2,
                 'trademark_id' => '2'
             ],
             [
                 'name' => 'NVR Recorder',
                 'slug' => 'nvr-recorder',
-                'type' => 3,
+                'type' => 1,
                 'trademark_id' => '2'
             ],
             [

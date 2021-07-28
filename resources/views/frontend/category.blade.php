@@ -81,13 +81,24 @@
                     </form>
                 </div>
                 <div>
-                    @for($i=0;$i<2;$i++)
+                    @for($i=0;$i<3;$i++)
                         <div class=" text-left w-100 btn btn-danger rounded-0" type="button" data-toggle="collapse"
-                             data-target="#{{$i==0?"camera":"elevator"}}"
+                             data-target="#coll-{{$i}}"
                              aria-expanded="true" aria-controls="camera">
-                            <i class="fas fa-hand-point-right"></i> {{$i==0?"Camera":"Thang máy"}}
+                            <i class="fas fa-hand-point-right"></i>
+                            @switch($i)
+                                @case(0)
+                                Camera
+                                @break
+                                @case(1)
+                                Thang Máy
+                                @break
+                                @case(2)
+                                Đầu ghi
+                                @break
+                            @endswitch
                         </div>
-                        <div class="collapse bg-white" id="{{$i==0?"camera":"elevator"}}">
+                        <div class="collapse bg-white" id="coll-{{$i}}">
                             @php
                                 $trades = \App\Models\Trade::get();
                             @endphp
@@ -96,7 +107,9 @@
                                     $listCategory = $trade->categories()->where("type",'=',$i)->get();
                                 @endphp
                                 @if($listCategory->count() >0 )
-                                    <div class="bg-secondary text-white border-bottom py-2 w-100 btn text-left rounded-0">Nhà phân phối {{$trade->name}}</div>
+                                    <div
+                                        class="bg-secondary text-white border-bottom py-2 w-100 btn text-left rounded-0">
+                                        Nhà phân phối {{$trade->name}}</div>
                                 @endif
                                 @foreach($listCategory as $cat)
                                     <a href="{{route("category",$cat->slug)}}">

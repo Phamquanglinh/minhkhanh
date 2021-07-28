@@ -142,7 +142,7 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle dropright  " href="#">Camera</a>
                             <ul class="dropdown-menu">
-                                @php($cameraArr = \App\Models\Category::where([['type', 1], ['status', 1]])->get())
+                                @php($cameraArr = \App\Models\Category::where([['type', 0], ['status', 1]])->get())
                                 @foreach($cameraArr as $camera)
                                     <li><a class="dropdown-item"
                                            href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a>
@@ -153,7 +153,7 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle dropright  " href="#">Thang máy</a>
                             <ul class="dropdown-menu">
-                                @php($elevatorArr = \App\Models\Category::where([['type', 2], ['status', 1]])->get())
+                                @php($elevatorArr = \App\Models\Category::where([['type', 1], ['status', 1]])->get())
                                 @foreach($elevatorArr as $elevator)
                                     <li><a class="dropdown-item"
                                            href="{{route("category",['name'=>$elevator->slug])}}">{{$elevator->name}}</a>
@@ -164,7 +164,7 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle dropright  " href="#">Đầu ghi</a>
                             <ul class="dropdown-menu">
-                                @php($recorderArr = \App\Models\Category::where([['type', 3], ['status', 1]])->get())
+                                @php($recorderArr = \App\Models\Category::where([['type', 2], ['status', 1]])->get())
                                 @foreach($recorderArr as $recorder)
                                     <li><a class="dropdown-item"
                                            href="{{route("category",['name'=>$recorder->slug])}}">{{$recorder->name}}</a>

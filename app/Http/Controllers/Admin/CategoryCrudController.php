@@ -41,9 +41,9 @@ class CategoryCrudController extends CrudController
     {
         CRUD::addColumn(['name' => 'name', 'label' => 'Tên danh mục']);
         CRUD::addColumn(['name' => 'slug', 'label' => 'Đường dẫn']);
-        CRUD::addColumn(['name' => 'type', 'label' => 'Loại', 'type' => 'select_from_array', 'options' => ['Camera', 'Thang máy']]);
+        CRUD::addColumn(['name' => 'type', 'label' => 'Loại', 'type' => 'select_from_array', 'options' => ['Camera', 'Thang máy','Đầu ghi']]);
         CRUD::addColumn([
-            'name' => 'trade_id',
+            'name' => 'trademark_id',
             'label' => 'Nhà phân phối',
             'type' => 'select',
             'model' => 'App\Models\Trade',
@@ -81,9 +81,9 @@ class CategoryCrudController extends CrudController
 
         CRUD::addField(['name' => 'name', 'label' => 'Tên danh mục']);
         CRUD::addField(['name' => 'slug', 'type' => 'hidden', 'label' => 'Đường dẫn']);
-        CRUD::addField(['name' => 'type', 'label' => 'Loại', 'type' => 'select_from_array', 'options' => ['Camera', 'Thang máy']]);
+        CRUD::addField(['name' => 'type', 'label' => 'Loại', 'type' => 'select_from_array', 'options' => ['Camera', 'Thang máy','Đầu Ghi']]);
         CRUD::addField([
-            'name' => 'trade_id',
+            'name' => 'trademark_id',
             'label' => 'Nhà phân phối',
             'type' => 'select2',
             'model' => 'App\Models\Trade',
