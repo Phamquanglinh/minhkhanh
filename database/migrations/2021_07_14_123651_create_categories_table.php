@@ -13,14 +13,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("slug");
-            $table->integer("type")->default(1);
-            $table->unsignedBigInteger("trade_id");
+            $table->integer("type")->comment("1: Camera, 2: Elevator, 3: Recorder");
+            $table->integer("status")->default(1)->comment("0: inactive, 1: active");
+            $table->unsignedBigInteger("trademark_id");
             $table->timestamps();
-            $table->foreign('trade_id')->references('id')->on('trades');
+            $table->foreign('trademark_id')->references('id')->on('trademark');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('category');
     }
 }

@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="container pt-3">
+    <div class="container py-2">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="col-12 col-sm-12 col-md-3 col-lg-3 px-0 text-center d-none d-sm-none d-md-block">
                 <a class="navbar-brand pt-0" href="{{route("index")}}" target="_blank"
@@ -142,8 +142,8 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle dropright  " href="#">Camera</a>
                             <ul class="dropdown-menu">
-                                @php($cameras = \App\Models\Category::where('type','=',0)->get())
-                                @foreach($cameras as $camera)
+                                @php($cameraArr = \App\Models\Category::where([['type', 1], ['status', 1]])->get())
+                                @foreach($cameraArr as $camera)
                                     <li><a class="dropdown-item"
                                            href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a>
                                     </li>
@@ -153,10 +153,21 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle dropright  " href="#">Thang máy</a>
                             <ul class="dropdown-menu">
-                                @php($cameras = \App\Models\Category::where('type','=',1)->get())
-                                @foreach($cameras as $camera)
+                                @php($elevatorArr = \App\Models\Category::where([['type', 2], ['status', 1]])->get())
+                                @foreach($elevatorArr as $elevator)
                                     <li><a class="dropdown-item"
-                                           href="{{route("category",['name'=>$camera->slug])}}">{{$camera->name}}</a>
+                                           href="{{route("category",['name'=>$elevator->slug])}}">{{$elevator->name}}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle dropright  " href="#">Đầu ghi</a>
+                            <ul class="dropdown-menu">
+                                @php($recorderArr = \App\Models\Category::where([['type', 3], ['status', 1]])->get())
+                                @foreach($recorderArr as $recorder)
+                                    <li><a class="dropdown-item"
+                                           href="{{route("category",['name'=>$recorder->slug])}}">{{$recorder->name}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -394,7 +405,7 @@
                         </p>
                         <p class="effect"><i class="fa fa-globe-asia my-border-radius"></i> <a class="text-white"
                                                                                                href="{{route("index")}}">www.minhkhanhgroups.com</a>
-                            - <a class="text-white" href="{{route("index")}}">www.minhkhanhgroups.com</a>
+                            - <a class="text-white" href="{{route("index")}}">www.minhkhanh.com</a>
                         </p>
                         <p class="effect"><i class="fa fa-barcode my-border-radius"></i> MST: 01010xxxx</p>
                         <p class="effect"><i class="fa fa-map-marker-alt my-border-radius"></i>
@@ -428,7 +439,7 @@
                         </p>
                         <p class="effect"><i class="fa fa-globe-asia my-border-radius"></i> <a class="text-white"
                                                                                                href="{{route("index")}}">www.minhkhanhgroups.com</a>
-                            - <a class="text-white" href="{{route("index")}}">www.minhkhanhgroups.com</a>
+                            - <a class="text-white" href="{{route("index")}}">www.minhkhanh.com</a>
                         </p>
                         <p class="effect"><i class="fa fa-barcode my-border-radius"></i> MST: 01010xxxx</p>
                         <p class="effect"><i class="fa fa-map-marker-alt my-border-radius"></i>
@@ -453,7 +464,7 @@
                         </p>
                         <p class="effect"><i class="fa fa-globe-asia my-border-radius"></i> <a class="text-white"
                                                                                                href="{{route("index")}}">www.minhkhanhgroups.com</a>
-                            - <a class="text-white" href="{{route("index")}}">www.minhkhanhgroups.com</a>
+                            - <a class="text-white" href="{{route("index")}}">www.minhkhanh.com</a>
                         </p>
                         <p class="effect"><i class="fa fa-barcode my-border-radius"></i> MST: 01010xxxx</p>
                         <p class="effect"><i class="fa fa-map-marker-alt my-border-radius"></i>
@@ -499,13 +510,9 @@
         }
         var $subMenu = $(this).next('.dropdown-menu');
         $subMenu.toggleClass('show');
-
-
         $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
             $('.dropdown-submenu .show').removeClass('show');
         });
-
-
         return false;
     });
 </script>

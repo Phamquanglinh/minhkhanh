@@ -81,11 +81,7 @@
                              data-parent="#accordion"
                              style="">
                             <div class="card card-body border-top pl-4 p-1">
-                                <ul class="m-0">
-                                    <li class="guide-faq">
-                                        {!! $faq->answer !!}
-                                    </li>
-                                </ul>
+                                {!! $faq->answer !!}
                             </div>
                         </div>
                     </div>

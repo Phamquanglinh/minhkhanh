@@ -16,7 +16,7 @@ class Category extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'categories';
+    protected $table = 'category';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -41,7 +41,7 @@ class Category extends Model
     */
     public function trades()
     {
-        return $this->belongsTo(Trade::class, 'trade_id');
+        return $this->belongsTo(Trade::class, 'trademark_id');
     }
 
     public function products()
