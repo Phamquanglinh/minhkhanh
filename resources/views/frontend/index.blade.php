@@ -27,7 +27,13 @@
         }
 
         .red-background {
+<<<<<<< HEAD
             background-image: url("https://i.pinimg.com/originals/aa/4a/16/aa4a16851449aa6155f36686013bbb81.png");
+=======
+
+            background-image: url("https://i.pinimg.com/originals/aa/4a/16/aa4a16851449aa6155f36686013bbb81.png");
+
+>>>>>>> 931e557c71839e4506f1081ef41b752e517ca18a
             min-height: 500px;
         }
 
@@ -491,7 +497,7 @@
     </div>
     <!--    Have any ideas in your mind?-->
     <div class="p-5 ideas-background row-full text-white main">
-        <div class="container">
+        <div class="container p-5">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 text-center text-md-left">
                     <h1 id="idea"><b><i>BẠN CÓ Ý TƯỞNG ???</i></b></h1>
