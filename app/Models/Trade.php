@@ -15,7 +15,7 @@ class Trade extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'trades';
+    protected $table = 'trademark';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -35,7 +35,7 @@ class Trade extends Model
     |--------------------------------------------------------------------------
     */
     public  function categories(){
-        return $this->hasMany(Category::class,'trade_id','id');
+        return $this->hasMany(Category::class,'trademark_id','id');
     }
     /*
     |--------------------------------------------------------------------------
