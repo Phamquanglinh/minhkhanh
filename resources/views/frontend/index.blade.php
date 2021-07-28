@@ -27,13 +27,15 @@
         }
 
         .red-background {
-            background-image: url("{{asset("img/introduction/ideas-bg.png")}}");
+
+            background-image: url("https://i.pinimg.com/originals/aa/4a/16/aa4a16851449aa6155f36686013bbb81.png");
+
             min-height: 500px;
         }
 
         .ideas-background {
-            background-image: url("{{asset("img/introduction/ideas-bg.png")}}");
-            /*min-height: 500px;*/
+            background-image: url("https://i.pinimg.com/originals/aa/4a/16/aa4a16851449aa6155f36686013bbb81.png");
+            min-height: 500px;
         }
 
 
